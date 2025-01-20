@@ -1,0 +1,89 @@
+.story {
+  width: 75%;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.2);
+  background-color: rgba($color-white, .6);
+  margin: 0 auto;
+  padding: 6rem;
+  padding-top: -60rem;
+  border-radius: 5px;
+  font-size: $default-font-size;
+  padding-left: 9rem; 
+  transform: skewX(-12deg);
+  backface-visibility: hidden;
+
+  @include respond(tab-port){
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem; 
+  }
+
+  @include respond(phone){
+    transform: skewX(0);
+  }
+
+  /*& > * {
+    transform: skewX(12deg);
+  }*/
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left; 
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    //margin-right: 1.5rem;
+    //i added margin but he siad that transform in x direction is better for this situation.
+    //cause it is
+    transform: translateX(-2.5rem) skewX(12deg);
+    position: relative;
+
+    @include respond(phone){
+      transform: translateX(-2.5rem) skewX(0);
+    }
+  }
+
+  &__img {
+    //width: 15rem;
+    //height: 15rem;
+    //or use height property!!!!
+    height: 100%;
+    transform: translateX(-4rem) scale(1.5);
+    backface-visibility: hidden;
+    transition: all .5s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    @include respond(phone){
+      transform: skewX(0);
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    text-transform: uppercase;
+    color: $color-white;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0; 
+    transition: all .5s;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img{
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+
+
+}

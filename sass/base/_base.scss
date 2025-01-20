@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing:inherit;
+}
+html {
+  // this defines what 1 rem is, so it's really basic and doesn't related to typography.
+  font-size: 62.5%;  // 1rem = 10px; 10px/16px = 62.5%
+  /**
+  ok, so the default font for browsers is 16px,
+  then i would design the fonts in rem which is
+  based on 10px in rems. so 16/100 = 10/x => x=62.5%
+  so if a user changes their default browser font-size 
+  the whole document font would change. NICE! 
+  **/
+  @include respond(tab-land){
+    font-size: 56.25%; //1 rem = 8px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port){
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+  
+  @include respond(big-desktop){
+    font-size: 75%;  //1 rem = 12, 12/16 = 
+  }
+}
+body {
+  box-sizing: border-box;
+  margin: 3rem;
+
+  @include respond(tab-port){
+  margin: 0;
+  }
+}
+/*main:not(:nth-child(4)){
+  background-color: $color-gray-light-1;
+  z-index: -10;
+}*/
